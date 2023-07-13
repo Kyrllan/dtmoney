@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-top: -10rem;
+  margin-top: -7rem;
 
   div {
     background: var(--shape);
@@ -24,6 +24,15 @@ export const Container = styled.div`
       font-size: 2rem;
       font-weight: 500;
       line-height: 3rem;
+    }
+
+    &.deposit {
+      background: var(--green);
+      color: var(--shape);
+    }
+    &.withdraw {
+      background: var(--red);
+      color: var(--shape);
     }
   }
 `;
