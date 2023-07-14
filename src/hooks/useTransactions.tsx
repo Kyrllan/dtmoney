@@ -1,6 +1,5 @@
-import {createContext, useState, useEffect, ReactNode, useContext} from 'react';
-import {api} from '../services/api';
-
+import {createContext, useState, /* useEffect, */ ReactNode, useContext} from 'react';
+//import { api } from '../services/api';
 interface Transaction {
   id: number;
   title: string;
@@ -26,22 +25,35 @@ const TransactionsContext = createContext<TransactionsContextData>(
 );
 
 export function TransactionsProvider({children}: TransactionProviderProps) {
+  const [trasnactionId, setTransactionId] = useState(1);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     api.get('transactions').then((response) => {
       setTransactions(response.data.transactions);
     });
-  });
+  }); */
 
   async function createTransaction(transactionInput: TransactionInput) {
-    const response = await api.post('/transactions', {
+    const data: Transaction = {
+      id: trasnactionId,
+      title: transactionInput.title,
+      amount: transactionInput.amount,
+      category: transactionInput.category,
+      type: transactionInput.type,
+      createdAt: new Date().toISOString(),
+    };
+
+    setTransactionId(trasnactionId + 1);
+    setTransactions([...transactions, data]);
+
+    /*     const response = await api.post('/transactions', {
       ...transactionInput,
       createdAt: new Date(),
     });
     const {transaction} = response.data;
 
-    setTransactions([...transactions, transaction]);
+    setTransactions([...transactions, transaction]); */
   }
 
   return (
