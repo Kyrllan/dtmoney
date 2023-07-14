@@ -1,3 +1,8 @@
+
+![dashboard](https://github.com/Kyrllan/dtmoney/assets/31549101/cbdf920c-8059-4ef2-8615-abf197fb91ea)
+
+
+
 🚀 Tecnologias, Hooks e Bibliotecas
 Projeto desenvolvido com as seguintes tecnologias:
 
